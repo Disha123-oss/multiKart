@@ -3,9 +3,7 @@ server:
 
 spring:
   application:
-    name: MultiKart
+    name: Product
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: multiKart
+      uri: mongodb+srv://sdutta:A8T4bruLnXSdhuPc@multikart.khko0j6.mongodb.net/multiKart_product?retryWrites=true&w=majority
