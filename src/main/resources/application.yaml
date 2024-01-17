@@ -3,16 +3,9 @@ server:
 
 spring:
   application:
-    name: Product
+    name: MultiKart
   data:
     mongodb:
-      uri: mongodb+srv://sdutta:A8T4bruLnXSdhuPc@multikart.khko0j6.mongodb.net/multiKart_product?retryWrites=true&w=majority
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+      host: localhost
+      port: 27017
+      database: multiKart
