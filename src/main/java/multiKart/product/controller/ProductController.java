@@ -76,5 +76,17 @@ public class ProductController {
         return productDataService.getProductByVariantId(productId, variantId);
     }
 
+       @PutMapping("/updateAvgRating")
+    public ApplicationResponse updateAvgRating(@RequestBody Product product) {
+        return productDataService.updateAvgRating(product.getProduct_id(), product.getAvgRating());
+    }
+    @Operation(summary = "Get the products filtered based on category, brands, colors, sizes")
+    @Tag(name="Products")
+    @GetMapping("/filterProducts")
+    public ApplicationResponse filterAndSortProducts(@RequestParam(required = false) String category, @RequestParam(required = false) List<String> brands, @RequestParam(required = false) List<String> colors, @RequestParam(required = false) List<String>sizes, @RequestParam(required = false)
+            Double minPrice, @RequestParam(required = false) Double maxPrice) {
+
+        return productDataService.filterProducts(category,brands,colors,sizes,minPrice,maxPrice);
+    }
 
 }
