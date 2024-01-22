@@ -25,5 +25,9 @@ public interface ProductDataService
     ApplicationResponse getProductByVariantId(String productId, int variantId);
     void saveProduct(Product existingProduct);
 
+     ApplicationResponse updateAvgRating(String productId, String avgRating);
+
+    ApplicationResponse filterProducts(String category, List<String> brands, List<String> colors, List<String> sizes, Double minPrice, Double maxPrice);
+
 
 }
