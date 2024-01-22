@@ -17,6 +17,22 @@ public interface ProductRepo extends MongoRepository<Product, String>
             " {'brand': { $regex: ?0, $options: 'i' }}]}")
             List<Product> findByTitleContaining(String keyword);
 
+        @Query("{'$or': [" +
+            "?#{ [0] == null ? null : {'category': { '$in': [ [0] ] }} }," +
+            "?#{ [1] == null ? null : {'brand': [ [1] ] }}," +
+            "?#{ [2] == null ? null : {'variants': { '$elemMatch': { 'color': { '$in': [ [2] ] }, 'size': { '$in': [ [3] ] } } }} }," +
+            "?#{ [4] == null ? null : {'price': { '$gte': [ [4] ], '$lte': [ [5] ] }} }" +
+            "]}")
+
+
+    List<Product> findByCategoryOrBrandOrVariantsColorOrVariantsSize(
+                String category,
+                List<String> brands,
+                List<String> colors,
+                List<String> sizes,
+                Double minPrice,
+                Double maxPrice
+        );
 
 
 }
